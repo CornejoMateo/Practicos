@@ -1,0 +1,101 @@
+-- Ejercicio 1
+
+    cuadrado(head[2,4,5,6,7,8])
+
+    Aplicativo: 1°. cuadrado (2) (def head), 
+              2°. 2 * 2 (def cuadrado)
+              3°. 4 (def *)
+
+    Normal: 1°. head[2,4,5,6,7,8] * head[2,4,5,6,7,8] (def cuadrado)
+          2°. 2 * head[2,4,5,6,7,8] (def head)
+          3°. 2 * 2 (def head)
+          4°. 4 (def *)
+
+-- Ejercicio 2
+   
+    head. linf
+
+    Aplicativo: 1° head (1 : linf)          (def linf)
+                2° head (1 : 1 : linf)      (def linf)
+                ... (no termina) 
+
+    Normal:  1° 1       (def head)
+
+-- Ejercicio 3
+   
+    f.2.3
+
+    Normal:     1° cuadrado (f.2.2)         (def f)
+                2° f.2.2 * f.2.2            (def cuadrado)
+                3° cuadrado f.2.1 * f.2.2       (def f)
+                4° f.2.1 * f.2.1 * f.2.2        (def cuadrado)
+                5° cuadrado (f.2.0) * f.2.1 * f.2.2         (def f) 
+                6° f.2.0 * f.2.0 * f.2.1 * f.2.2        (def cuadrado)
+                7° 2 * f.2.0 * f.2.1 * f.2.2        (def f)
+                8° 2 * 2 * f.2.1 * f.2.2        (def f) 
+                9° 4 * f.2.1 * f.2.2        (aritmetica)
+                10° 4 * cuadrado(f.2.0) * f.2.2     (def f)
+                11° 4 * f.2.0 * f.2.0 * f.2.2   (def cuadrado)
+                12° 4 * 2 * f.2.0 * f.2.2       (def f)
+                13° 8 * f.2.0 * f.2.2       (aritmetica)
+                14° 8 * 2 * f.2.2       (def f)
+                15° 16 * f.2.2              (aritmetica)
+                16° 16 * cuadrado(f.2.1)        (def f)
+                17° 16 * f.2.1 * f.2.1              (def cuadrado)
+                18° 16 * cuadrado (f.2.0) * f.2.1       (def f)
+                19° 16 * f.2.0 * f.2.0 * f.2.1      (def cuadrado)
+                20° 16 * 2 * f.2.0 * f.2.1      (def f)
+                21° 32 * f.2.0 * f.2.1      (aritmetica)
+                22° 32 * 2 * f.2.1      (def f)
+                23° 64 * f.2.1              (aritmetica)
+                24° 64 * cuadrado(f.2.0)        (def f)
+                25° 64 * f.2.0 * f.2.0          (def cuadrado)    
+                26° 64 * 2 * f.2.0      (def f)
+                27° 128 * f.2.0     (aritmetica)
+                28° 128 * 2         (def f)
+                29° 256         (aritmetica)
+
+    
+    Aplicativo: 1° cuadrado (f.2.2)     (def f)
+                2° cuadrado (cuadrado (f.2.1))      (def f)
+                3° cuadrado (cuadrado (cuadrado(f.2.0)))        (def f)
+                4° cuadrado (cuadrado (cuadrado(2)))        (def f)
+                5° cuadrado(cuadrado(2*2))          (def cuadrado)
+                6° cuadrado(cuadrado(4))        (aritmetica)
+                7° cuadrado(4 * 4)              (def cuadrado)
+                8° cuadrado(16)                 (aritmetica)
+                9° 16 * 16                  (def cuadrado)
+                10° 256              (aritmetica)
+
+-- Ejercicio 4
+   
+    square (inf)
+
+    Aplicativo: 1° square(inf + 1) (def inf)
+                2° square((inf + 1) + 1) (def inf)
+                ... (no termina)
+    Normal: 1° inf * inf (def square)
+            2° (inf + 1) * (inf + 1)
+            3° ((inf + 1) + 1) * ((inf + 1) + 1)
+            ... (no termina)
+
+-- Ejercicio 5
+   
+    f.2.3
+
+    Lazy: 1° cuad(f.2.2)     (def f)
+          2° x * x  [x = f.2.2] (def cuad)
+          3° x * x [x = cuad(f.2.1)] (def f)
+          4° x * x [x = s * s    where[s = f.2.1]]  (def cuad)
+          5° x * x [x = s * s    where[s = cuadf.2.0]]  (def s)
+          6° x * x [x = s * s    where[s = o * o    where[o = f.2.0]]]      (def cuad)
+          7° x * x [x = s * s    where[s = o * o    where[o = 2]]]      (def f)
+          8° x * x [x = s * s    where[s = 2 * 2]]      (def o)
+          9° x * x [x = s * s    where[s = 4]]          (aritmetica)
+          10° x * x [x = 4 * 4]                  (def s)
+          11° x * x [x = 16]            (aritmetica)
+          12° 16 * 16       (def de x)
+          13° 256           (aritmetica)
+
+
+-- Ejercicio 6
